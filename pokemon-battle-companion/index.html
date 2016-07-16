@@ -69,11 +69,11 @@
             for (var i=0, item; item = badPicks[i]; i++) {
                 item.style.display  = 'none';
             }
-            document.getElementById("effectiveAttackUI").style.display="block";
-            document.getElementById("ineffectiveAttackUI").style.display="block";
         }
         function onCreatureClick(good, bad) {
             hideAll();
+            document.getElementById("effectiveAttackUI").style.display="block";
+            document.getElementById("ineffectiveAttackUI").style.display="block";
             for (var i=0, item; item = good[i]; i++) {
                 document.getElementById("good"+item).style.display = 'inline';
             }
@@ -84,8 +84,6 @@
 
         onload = function f() {
             hideAll();
-            document.getElementById("effectiveAttackUI").style.display="none";
-            document.getElementById("ineffectiveAttackUI").style.display="none";
         }
         
     </script>
@@ -114,7 +112,7 @@
                 <img src="steel.png" onclick="onCreatureClick(goodForSteel, badForSteel)" title="Steel"/>
                 <img src="water.png" onclick="onCreatureClick(goodForWater, badForWater)" title="Water"/>
             </div>
-            <div id="effectiveAttackUI" class="panel panel-success" style="margin-top:20px;">
+            <div id="effectiveAttackUI" class="panel panel-success" style="margin-top:20px; display: none;">
                <div class="panel-heading">
                     <h3 class="panel-title">GOOD CHOICES</h3>
                 </div>
@@ -139,7 +137,7 @@
                     <img id="goodWater" src="water.png" />
                 </div>
             </div>
-            <div id="ineffectiveAttackUI" class="panel panel-danger">
+            <div id="ineffectiveAttackUI" class="panel panel-danger"  style="display: none;">
                 <div class="panel-heading">
                     <h3 class="panel-title">BAD CHOICES</h3>
                 </div>
