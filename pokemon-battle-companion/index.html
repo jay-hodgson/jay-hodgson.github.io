@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--
+    Pokemon battle companion tells you what Pokemon types would be effective or ineffective against a particular opponent type.
+    Copyright (C) 2016  Jay Hodgson
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    -->
+<html>
+    <head>
+        <title>Pokemon Battle Companion</title>
+    </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+        var goodForNormal = ["Fighting"];
+        var badForNormal = ["Ghost"];
+        var goodForFire = ["Water", "Ground", "Rock"];
+        var badForFire = ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"];
+        var goodForWater = ["Electric", "Grass"];
+        var badForWater = ["Fire", "Water", "Ice", "Steel"];
+        var goodForElectric = ["Ground"];
+        var badForElectric = ["Electric", "Flying", "Steel"];
+        var goodForGrass = ["Fire", "Ice", "Poison", "Flying", "Bug"];
+        var badForGrass = ["Water", "Electric", "Grass", "Ground"];
+        var goodForIce = ["Fire", "Fighting", "Rock", "Steel"];
+        var badForIce = ["Ice"];
+        var goodForFighting = ["Flying", "Psychic", "Fairy"];
+        var badForFighting = ["Bug", "Rock","Dark"];
+        var goodForPoison = ["Ground", "Psychic"];
+        var badForPoison = ["Grass", "Fighting","Poison", "Bug", "Fairy"];
+        var goodForGround = ["Water", "Grass","Ice"];
+        var badForGround = ["Electric", "Poison", "Rock"];
+        var goodForFly = ["Electric", "Ice", "Rock"];
+        var badForFly = ["Grass", "Fighting", "Ground", "Bug"];
+        var goodForPsychic = ["Bug", "Ghost", "Dark"];
+        var badForPsychic = ["Fighting", "Psychic"];
+        var goodForBug = ["Fire","Flying","Rock"];
+        var badForBug = ["Grass","Fighting","Ground"];
+        var goodForRock = ["Water","Grass","Fighting", "Ground", "Steel"];
+        var badForRock = ["Normal","Fire","Poison", "Flying"];
+        var goodForGhost = ["Ghost","Dark"];
+        var badForGhost = ["Normal","Fighting","Poison", "Bug"];
+        var goodForDragon = ["Ice","Dragon","Fairy"];
+        var badForDragon = ["Fire","Water","Electric", "Grass"];
+        var goodForDark = ["Fighting","Bug","Fairy"];
+        var badForDark = ["Psychic","Ghost","Dark"];
+        var goodForSteel = ["Fire","Fighting","Ground"];
+        var badForSteel = ["Normal","Grass","Ice","Poison","Flying","Psychic","Bug", "Rock","Dragon","Steel","Fairy"];
+        var goodForFairy = ["Poison","Steel"];
+        var badForFairy = ["Fighting","Bug","Dragon","Dark"];
+
+        function hideAll() {
+            var goodPicks = document.getElementById("goodPicks").children;
+            for (var i=0, item; item = goodPicks[i]; i++) {
+                item.style.display  = 'none';
+            }
+            var badPicks = document.getElementById("badPicks").children;
+            for (var i=0, item; item = badPicks[i]; i++) {
+                item.style.display  = 'none';
+            }
+            document.getElementById("effectiveAttackUI").style.display="block";
+            document.getElementById("ineffectiveAttackUI").style.display="block";
+        }
+        function onCreatureClick(good, bad) {
+            hideAll();
+            for (var i=0, item; item = good[i]; i++) {
+                document.getElementById("good"+item).style.display = 'inline';
+            }
+            for (var i=0, item; item = bad[i]; i++) {
+                document.getElementById("bad"+item).style.display = 'inline';
+            }
+        }
+
+        onload = function f() {
+            hideAll();
+            document.getElementById("effectiveAttackUI").style.display="none";
+            document.getElementById("ineffectiveAttackUI").style.display="none";
+        }
+        
+    </script>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Pok&eacute;mon Battle Companion! <small>what type are you planning to battle?</small></h1>
+            </div>
+            <div>
+                <img src="bug.png" onclick="onCreatureClick(goodForBug, badForBug)" title="Bug"/>
+                <img src="dark.png"  onclick="onCreatureClick(goodForDark, badForDark)" title="Dark"/>
+                <img src="dragon.png"  onclick="onCreatureClick(goodForDragon, badForDragon)" title="Dragon" />
+                <img src="electric.png" onclick="onCreatureClick(goodForElectric, badForElectric)" title="Electric"/>
+                <img src="fairy.png" onclick="onCreatureClick(goodForFairy, badForFairy)" title="Fairy"/>
+                <img src="fighting.png" onclick="onCreatureClick(goodForFighting, badForFighting)" title="Fighting"/>
+                <img src="fire.png" onclick="onCreatureClick(goodForFire, badForFire)" title="Fire"/>
+                <img src="flying.png" onclick="onCreatureClick(goodForFlying, badForFlying)" title="Flying"/>
+                <img src="ghost.png" onclick="onCreatureClick(goodForGhost, badForGhost)" title="Ghost"/>
+                <img src="grass.png" onclick="onCreatureClick(goodForGrass, badForGrass)" title="Grass"/>
+                <img src="ground.png" onclick="onCreatureClick(goodForGround, badForGround)" title="Ground"/>
+                <img src="ice.png" onclick="onCreatureClick(goodForIce, badForIce)" title="Ice"/>
+                <img src="normal.png" onclick="onCreatureClick(goodForNormal, badForNormal)" title="Normal"/>
+                <img src="poison.png" onclick="onCreatureClick(goodForPoison, badForPoison)" title="Poison"/>
+                <img src="psychic.png" onclick="onCreatureClick(goodForPsychic, badForPsychic)" title="Psychic"/>
+                <img src="rock.png" onclick="onCreatureClick(goodForRock, badForRock)" title="Rock"/>
+                <img src="steel.png" onclick="onCreatureClick(goodForSteel, badForSteel)" title="Steel"/>
+                <img src="water.png" onclick="onCreatureClick(goodForWater, badForWater)" title="Water"/>
+            </div>
+            <div id="effectiveAttackUI" class="panel panel-success" style="margin-top:20px;">
+               <div class="panel-heading">
+                    <h3 class="panel-title">GOOD CHOICES</h3>
+                </div>
+                <div id="goodPicks" class="panel-body">
+                    <img id="goodBug" src="bug.png" />
+                    <img id="goodDark" src="dark.png" />
+                    <img id="goodDragon" src="dragon.png" />
+                    <img id="goodElectric" src="electric.png" />
+                    <img id="goodFairy" src="fairy.png" />
+                    <img id="goodFighting" src="fighting.png" />
+                    <img id="goodFire" src="fire.png" />
+                    <img id="goodFlying" src="flying.png" />
+                    <img id="goodGhost" src="ghost.png" />
+                    <img id="goodGrass" src="grass.png" />
+                    <img id="goodGround" src="ground.png" />
+                    <img id="goodIce" src="ice.png" />
+                    <img id="goodNormal" src="normal.png" />
+                    <img id="goodPoison" src="poison.png" />
+                    <img id="goodPsychic" src="psychic.png" />
+                    <img id="goodRock" src="rock.png" />
+                    <img id="goodSteel" src="steel.png" />
+                    <img id="goodWater" src="water.png" />
+                </div>
+            </div>
+            <div id="ineffectiveAttackUI" class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">BAD CHOICES</h3>
+                </div>
+                <div id="badPicks" class="panel-body">
+                    <img id="badBug" src="bug.png" />
+                    <img id="badDark" src="dark.png" />
+                    <img id="badDragon" src="dragon.png" />
+                    <img id="badElectric" src="electric.png" />
+                    <img id="badFairy" src="fairy.png" />
+                    <img id="badFighting" src="fighting.png" />
+                    <img id="badFire" src="fire.png" />
+                    <img id="badFlying" src="flying.png" />
+                    <img id="badGhost" src="ghost.png" />
+                    <img id="badGrass" src="grass.png" />
+                    <img id="badGround" src="ground.png" />
+                    <img id="badIce" src="ice.png" />
+                    <img id="badNormal" src="normal.png" />
+                    <img id="badPoison" src="poison.png" />
+                    <img id="badPsychic" src="psychic.png" />
+                    <img id="badRock" src="rock.png" />
+                    <img id="badSteel" src="steel.png" />
+                    <img id="badWater" src="water.png" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
