@@ -36,6 +36,17 @@
         }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80895149-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
     <script type="text/javascript">
         var goodForNormal = ["Fighting"];
         var badForNormal = ["Ghost"];
@@ -95,7 +106,8 @@
             }
             
             // set the underlying caption heading to red
-            el.getElementsByClassName("caption-heading")[0].style.color='#e71d1d';
+            var targetCaptionHeader = el.getElementsByClassName("caption-heading")[0];
+            targetCaptionHeader.style.color='#e71d1d';
             
             for (var i=0, item; item = good[i]; i++) {
                 document.getElementById("good"+item).style.display = 'inline';
@@ -104,6 +116,8 @@
                 document.getElementById("bad"+item).style.display = 'inline';
             }
             document.getElementById("effectiveAttackUI").scrollIntoView();
+
+            ga('send', 'event', 'Type', 'click', targetCaptionHeader.innerHTML);
         }
 
         onload = function f() {
