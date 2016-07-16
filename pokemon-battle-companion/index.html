@@ -26,6 +26,12 @@
         <meta name="keywords" content="Pokemon, gym, battle, type, combat, power, strength, weakness">
         <meta name="author" content="Jay Hodgson">
     </head>
+    <style>
+        .caption-heading {
+            margin-top:5px;
+            margin-bottom:0px;
+        }
+    </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script type="text/javascript">
         var goodForNormal = ["Fighting"];
@@ -46,8 +52,8 @@
         var badForPoison = ["Grass", "Fighting","Poison", "Bug", "Fairy"];
         var goodForGround = ["Water", "Grass","Ice"];
         var badForGround = ["Electric", "Poison", "Rock"];
-        var goodForFly = ["Electric", "Ice", "Rock"];
-        var badForFly = ["Grass", "Fighting", "Ground", "Bug"];
+        var goodForFlying = ["Electric", "Ice", "Rock"];
+        var badForFlying = ["Grass", "Fighting", "Ground", "Bug"];
         var goodForPsychic = ["Bug", "Ghost", "Dark"];
         var badForPsychic = ["Fighting", "Psychic"];
         var goodForBug = ["Fire","Flying","Rock"];
@@ -75,10 +81,19 @@
                 item.style.display  = 'none';
             }
         }
-        function onCreatureClick(good, bad) {
+        function onCreatureClick(el, good, bad) {
             hideAll();
             document.getElementById("effectiveAttackUI").style.display="block";
             document.getElementById("ineffectiveAttackUI").style.display="block";
+            // reset colors for all other caption headings in the page
+            var captionHeadings = document.getElementsByClassName("caption-heading");
+            for (var i=0, item; item = captionHeadings[i]; i++) {
+                item.style.color = 'black';
+            }
+            
+            // set the underlying caption heading to red
+            el.getElementsByClassName("caption-heading")[0].style.color='#e71d1d';
+            
             for (var i=0, item; item = good[i]; i++) {
                 document.getElementById("good"+item).style.display = 'inline';
             }
@@ -97,129 +112,129 @@
                 <h1 style="color:#e71d1d">Pok&eacute;mon Battle Companion! <small>what type are you planning to battle?</small></h1>
             </div>
             <div class="row" style="cursor: pointer; margin-top:30px;">
-	            <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForBug, badForBug)">
+	            <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForBug, badForBug)">
                     <div class="thumbnail"><img src="bug.png" title="Bug"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Bug</h3>
+                            <h3 class="caption-heading">Bug</h3>
                         </div>
                     </div>
 	            </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForDark, badForDark)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForDark, badForDark)">
                     <div class="thumbnail"><img src="dark.png" title="Dark"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Dark</h3>
+                            <h3 class="caption-heading">Dark</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForDragon, badForDragon)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForDragon, badForDragon)">
                     <div class="thumbnail"><img src="dragon.png" title="Dragon" />
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Dragon</h3>
+                            <h3 class="caption-heading">Dragon</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForElectric, badForElectric)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForElectric, badForElectric)">
                     <div class="thumbnail"><img src="electric.png"  title="Electric"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Electric</h3>
+                            <h3 class="caption-heading">Electric</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForFairy, badForFairy)" >
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForFairy, badForFairy)" >
                     <div class="thumbnail"><img src="fairy.png" title="Fairy"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Fairy</h3>
+                            <h3 class="caption-heading">Fairy</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForFighting, badForFighting)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForFighting, badForFighting)">
                     <div class="thumbnail"><img src="fighting.png"  title="Fighting"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Fighting</h3>
+                            <h3 class="caption-heading">Fighting</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForFire, badForFire)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForFire, badForFire)">
                     <div class="thumbnail"><img src="fire.png"  title="Fire"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Fire</h3>
+                            <h3 class="caption-heading">Fire</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForFlying, badForFlying)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForFlying, badForFlying)">
                     <div class="thumbnail"><img src="flying.png"  title="Flying"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Flying</h3>
+                            <h3 class="caption-heading">Flying</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForGhost, badForGhost)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForGhost, badForGhost)">
                     <div class="thumbnail"><img src="ghost.png"  title="Ghost"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Ghost</h3>
+                            <h3 class="caption-heading">Ghost</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForGrass, badForGrass)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForGrass, badForGrass)">
                     <div class="thumbnail"><img src="grass.png"  title="Grass"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Grass</h3>
+                            <h3 class="caption-heading">Grass</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForGround, badForGround)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForGround, badForGround)">
                     <div class="thumbnail"><img src="ground.png"  title="Ground"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Ground</h3>
+                            <h3 class="caption-heading">Ground</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForIce, badForIce)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForIce, badForIce)">
                     <div class="thumbnail"><img src="ice.png"  title="Ice"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Ice</h3>
+                            <h3 class="caption-heading">Ice</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForNormal, badForNormal)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForNormal, badForNormal)">
                     <div class="thumbnail"><img src="normal.png"  title="Normal"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Normal</h3>
+                            <h3 class="caption-heading">Normal</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(goodForPoison, badForPoison)">
+                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(this,goodForPoison, badForPoison)">
                     <div class="thumbnail"><img src="poison.png" title="Poison"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Poison</h3>
+                            <h3 class="caption-heading">Poison</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(goodForPsychic, badForPsychic)">
+                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(this,goodForPsychic, badForPsychic)">
                     <div class="thumbnail"><img src="psychic.png" title="Psychic"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Psychic</h3>
+                            <h3 class="caption-heading">Psychic</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(goodForRock, badForRock)">
+                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(this,goodForRock, badForRock)">
                     <div class="thumbnail"><img src="rock.png" title="Rock"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Rock</h3>
+                            <h3 class="caption-heading">Rock</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(goodForSteel, badForSteel)">
+                <div class="col-xs-6 col-md-2" onclick="onCreatureClick(this,goodForSteel, badForSteel)">
                     <div class="thumbnail"><img src="steel.png"  title="Steel"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Steel</h3>
+                            <h3 class="caption-heading">Steel</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(goodForWater, badForWater)">
+                <div class="col-xs-6 col-md-2"  onclick="onCreatureClick(this,goodForWater, badForWater)">
                     <div class="thumbnail"><img src="water.png" title="Water"/>
                         <div class="caption text-center">
-                            <h3 style="margin-top:5px;margin-bottom:0px;">Water</h3>
+                            <h3 class="caption-heading">Water</h3>
                         </div>
                     </div>
                 </div>
