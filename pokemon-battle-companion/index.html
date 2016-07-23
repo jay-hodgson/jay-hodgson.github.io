@@ -48,42 +48,42 @@
     </script>
 
     <script type="text/javascript">
-        var goodForNormal = ["Fighting"];
-        var badForNormal = ["Ghost"];
-        var goodForFire = ["Water", "Ground", "Rock"];
-        var badForFire = ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"];
-        var goodForWater = ["Electric", "Grass"];
-        var badForWater = ["Fire", "Water", "Ice", "Steel"];
-        var goodForElectric = ["Ground"];
-        var badForElectric = ["Electric", "Flying", "Steel"];
-        var goodForGrass = ["Fire", "Ice", "Poison", "Flying", "Bug"];
-        var badForGrass = ["Water", "Electric", "Grass", "Ground"];
-        var goodForIce = ["Fire", "Fighting", "Rock", "Steel"];
-        var badForIce = ["Ice"];
-        var goodForFighting = ["Flying", "Psychic", "Fairy"];
-        var badForFighting = ["Bug", "Rock","Dark"];
-        var goodForPoison = ["Ground", "Psychic"];
-        var badForPoison = ["Grass", "Fighting","Poison", "Bug", "Fairy"];
-        var goodForGround = ["Water", "Grass","Ice"];
-        var badForGround = ["Electric", "Poison", "Rock"];
-        var goodForFlying = ["Electric", "Ice", "Rock"];
-        var badForFlying = ["Grass", "Fighting", "Ground", "Bug"];
-        var goodForPsychic = ["Bug", "Ghost", "Dark"];
-        var badForPsychic = ["Fighting", "Psychic"];
-        var goodForBug = ["Fire","Flying","Rock"];
-        var badForBug = ["Grass","Fighting","Ground"];
-        var goodForRock = ["Water","Grass","Fighting", "Ground", "Steel"];
-        var badForRock = ["Normal","Fire","Poison", "Flying"];
-        var goodForGhost = ["Ghost","Dark"];
-        var badForGhost = ["Normal","Fighting","Poison", "Bug"];
-        var goodForDragon = ["Ice","Dragon","Fairy"];
-        var badForDragon = ["Fire","Water","Electric", "Grass"];
-        var goodForDark = ["Fighting","Bug","Fairy"];
-        var badForDark = ["Psychic","Ghost","Dark"];
-        var goodForSteel = ["Fire","Fighting","Ground"];
-        var badForSteel = ["Normal","Grass","Ice","Poison","Flying","Psychic","Bug", "Rock","Dragon","Steel","Fairy"];
-        var goodForFairy = ["Poison","Steel"];
-        var badForFairy = ["Fighting","Bug","Dragon","Dark"];
+        var goodForNormal = [];
+        var badForNormal = ["Rock", "Ghost", "Steel"];
+        var goodForFire = ["Grass", "Ice", "Bug", "Steel"];
+        var badForFire = ["Fire", "Water", "Rock", "Dragon"];
+        var goodForWater = ["Fire", "Ground", "Rock"];
+        var badForWater = ["Water", "Grass", "Dragon"];
+        var goodForElectric = ["Water", "Flying"];
+        var badForElectric = ["Electric", "Grass", "Dragon"];
+        var goodForGrass = ["Water", "Ground", "Rock"];
+        var badForGrass = ["Fire", "Poison", "Grass", "Flying", "Bug", "Dragon", "Steel"];
+        var goodForIce = ["Grass", "Ground", "Flying", "Dragon"];
+        var badForIce = ["Fire", "Water", "Ice", "Steel"];
+        var goodForFighting = ["Normal", "Ice", "Rock", "Dark", "Steel"];
+        var badForFighting = ["Poison", "Flying","Psychic", "Bug", "Ghost","Fairy"];
+        var goodForPoison = ["Grass", "Fairy"];
+        var badForPoison = ["Poison", "Ground","Rock", "Ghost", "Steel"];
+        var goodForGround = ["Fire", "Electric","Poison","Rock"];
+        var badForGround = ["Grass", "Flying", "Bug"];
+        var goodForFlying = ["Grass", "Fighting", "Bug"];
+        var badForFlying = ["Electric", "Rock", "Steel"];
+        var goodForPsychic = ["Fighting", "Poison"];
+        var badForPsychic = ["Psychic", "Dark", "Steel"];
+        var goodForBug = ["Grass","Psychic","Dark"];
+        var badForBug = ["Fire","Fighting","Poison","Flying","Ghost","Steel","Fairy"];
+        var goodForRock = ["Fire","Ice","Flying", "Bug"];
+        var badForRock = ["Fighting","Ground","Steel"];
+        var goodForGhost = ["Bug","Ghost"];
+        var badForGhost = ["Normal","Dark"];
+        var goodForDragon = ["Dragon"];
+        var badForDragon = ["Steel","Fairy"];
+        var goodForDark = ["Psychic","Ghost"];
+        var badForDark = ["Fighting","Dark","Fairy"];
+        var goodForSteel = ["Ice","Rock","Fairy"];
+        var badForSteel = ["Fire","Water","Electric","Steel"];
+        var goodForFairy = ["Fighting","Dragon","Dark"];
+        var badForFairy = ["Fire","Poison","Steel"];
 
         function hideAll() {
             var goodPicks = document.getElementById("goodPicks").children;
@@ -115,7 +115,7 @@
             for (var i=0, item; item = bad[i]; i++) {
                 document.getElementById("bad"+item).style.display = 'inline';
             }
-            document.getElementById("effectiveAttackUI").scrollIntoView();
+            // document.getElementById("effectiveAttackUI").scrollIntoView();
 
             ga('send', 'event', 'Type', 'click', targetCaptionHeader.innerHTML);
         }
@@ -127,7 +127,7 @@
     <body>
         <div class="container">
             <div class="page-header">
-                <h1 style="color:#e71d1d">Pok&eacute;mon Battle Companion! <small>what type are you planning to battle?</small></h1>
+                <h1 style="color:#e71d1d">Pok&eacute;mon Battle Companion! <small>what type of Pokemon do you have???</small></h1>
             </div>
             <div class="row" style="cursor: pointer; margin-top:30px;">
 	            <div class="col-xs-4 col-sm-3 col-md-2" onclick="onCreatureClick(this,goodForBug, badForBug)">
@@ -259,52 +259,268 @@
             </div>
             <div id="effectiveAttackUI" class="panel panel-success" style="margin-top:20px; display: none;">
                <div class="panel-heading">
-                    <h3 class="panel-title">GOOD CHOICES</h3>
+                    <h3>YOUR POKEMON IS SUPER EFFECTIVE (2X DAMAGE!) AGAINST</h3>
                 </div>
-                <div id="goodPicks" class="panel-body">
-                    <img id="goodBug" src="bug.png"  title="Bug"/>
-                    <img id="goodDark" src="dark.png"  title="Dark"/>
-                    <img id="goodDragon" src="dragon.png" title="Dragon"/>
-                    <img id="goodElectric" src="electric.png" title="Electric"/>
-                    <img id="goodFairy" src="fairy.png" title="Fairy"/>
-                    <img id="goodFighting" src="fighting.png" title="Fighting"/>
-                    <img id="goodFire" src="fire.png" title="Fire"/>
-                    <img id="goodFlying" src="flying.png" title="Flying"/>
-                    <img id="goodGhost" src="ghost.png" title="Ghost"/>
-                    <img id="goodGrass" src="grass.png" title="Grass"/>
-                    <img id="goodGround" src="ground.png" title="Ground"/>
-                    <img id="goodIce" src="ice.png" title="Ice"/>
-                    <img id="goodNormal" src="normal.png" title="Normal"/>
-                    <img id="goodPoison" src="poison.png" title="Poison"/>
-                    <img id="goodPsychic" src="psychic.png" title="Psychic"/>
-                    <img id="goodRock" src="rock.png" title="Rock"/>
-                    <img id="goodSteel" src="steel.png" title="Steel"/>
-                    <img id="goodWater" src="water.png"  title="Water"/>
+                <div id="goodPicks" class="panel-body row">
+                    <div id="goodBug" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="bug.png" title="Bug"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Bug</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodDark" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="dark.png" title="Dark"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Dark</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodDragon" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="dragon.png" title="Dragon" />
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Dragon</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodElectric" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="electric.png"  title="Electric"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Electric</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodFairy" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="fairy.png" title="Fairy"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Fairy</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodFighting" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="fighting.png"  title="Fighting"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Fighting</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodFire" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="fire.png"  title="Fire"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Fire</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodFlying" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="flying.png"  title="Flying"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Flying</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodGhost" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="ghost.png"  title="Ghost"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Ghost</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodGrass"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="grass.png"  title="Grass"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Grass</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodGround" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="ground.png"  title="Ground"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Ground</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodIce" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="ice.png"  title="Ice"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Ice</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodNormal" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="normal.png"  title="Normal"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Normal</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodPoison" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="poison.png" title="Poison"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Poison</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="goodPsychic" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="psychic.png" title="Psychic"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Psychic</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodRock"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="rock.png" title="Rock"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Rock</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodSteel"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="steel.png"  title="Steel"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Steel</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="goodWater"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="water.png" title="Water"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Water</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="ineffectiveAttackUI" class="panel panel-danger"  style="display: none;">
                 <div class="panel-heading">
-                    <h3 class="panel-title">BAD CHOICES</h3>
+                    <h3>YOUR POKEMON IS NOT EFFECTIVE AGAINST</h3>
                 </div>
-                <div id="badPicks" class="panel-body">
-                    <img id="badBug" src="bug.png" title="Bug"/>
-                    <img id="badDark" src="dark.png"  title="Dark"/>
-                    <img id="badDragon" src="dragon.png" title="Dragon"/>
-                    <img id="badElectric" src="electric.png" title="Electric"/>
-                    <img id="badFairy" src="fairy.png" title="Fairy"/>
-                    <img id="badFighting" src="fighting.png" title="Fighting"/>
-                    <img id="badFire" src="fire.png" title="Fire"/>
-                    <img id="badFlying" src="flying.png" title="Flying"/>
-                    <img id="badGhost" src="ghost.png"  title="Ghost"/>
-                    <img id="badGrass" src="grass.png"  title="Grass"/>
-                    <img id="badGround" src="ground.png" title="Ground"/>
-                    <img id="badIce" src="ice.png" title="Ice"/>
-                    <img id="badNormal" src="normal.png" title="Normal"/>
-                    <img id="badPoison" src="poison.png" title="Poison"/>
-                    <img id="badPsychic" src="psychic.png" title="Psychic"/>
-                    <img id="badRock" src="rock.png"  title="Rock"/>
-                    <img id="badSteel" src="steel.png" title="Steel"/>
-                    <img id="badWater" src="water.png"  title="Water"/>
+                <div id="badPicks" class="panel-body row">
+                    <div id="badBug" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="bug.png" title="Bug"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Bug</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badDark" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="dark.png" title="Dark"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Dark</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badDragon" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="dragon.png" title="Dragon" />
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Dragon</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badElectric" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="electric.png"  title="Electric"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Electric</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badFairy" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="fairy.png" title="Fairy"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Fairy</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badFighting" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="fighting.png"  title="Fighting"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Fighting</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badFire" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="fire.png"  title="Fire"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Fire</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badFlying" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="flying.png"  title="Flying"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Flying</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badGhost" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="ghost.png"  title="Ghost"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Ghost</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badGrass"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="grass.png"  title="Grass"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Grass</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badGround" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="ground.png"  title="Ground"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Ground</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badIce" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="ice.png"  title="Ice"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Ice</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badNormal" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="normal.png"  title="Normal"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Normal</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badPoison" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="poison.png" title="Poison"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Poison</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="badPsychic" class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="psychic.png" title="Psychic"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Psychic</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badRock"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="rock.png" title="Rock"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Rock</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badSteel"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="steel.png"  title="Steel"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Steel</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="badWater"  class="col-xs-4 col-sm-3 col-md-2">
+                        <div class="thumbnail"><img src="water.png" title="Water"/>
+                            <div class="caption text-center">
+                                <h3 class="caption-heading">Water</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="alert alert-success" role="alert">
